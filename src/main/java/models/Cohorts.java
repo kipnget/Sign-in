@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class cohorts {
+public class Cohorts {
     private int id;
     private String name;
     ArrayList<Integer> module;
     private Timestamp startDate;
     private Timestamp endDate;
 
-    public cohorts(int id, String name, ArrayList<Integer> module, Timestamp startDate, Timestamp endDate) {
+    public Cohorts(int id, String name, ArrayList<Integer> module, Timestamp startDate, Timestamp endDate) {
         this.id = id;
         this.name = name;
         this.module = module;
@@ -62,8 +62,8 @@ public class cohorts {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof cohorts)) return false;
-        cohorts cohorts = (cohorts) o;
+        if (!(o instanceof Cohorts)) return false;
+        Cohorts cohorts = (Cohorts) o;
         return getId() == cohorts.getId() &&
                 getName().equals(cohorts.getName()) &&
                 getModule().equals(cohorts.getModule()) &&

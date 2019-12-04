@@ -1,10 +1,9 @@
 package models;
 import java.util.ArrayList;
-import java.util.List;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class users {
+public class Users {
     private int id;
     private String name;
     private String email;
@@ -15,7 +14,7 @@ public class users {
     private String role;
 
 
-    public users(int id, String name, String email, Timestamp registerDate, String password, int cohortId, ArrayList<Integer> module,String role) {
+    public Users(int id, String name, String email, Timestamp registerDate, String password, int cohortId, ArrayList<Integer> module, String role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -93,8 +92,8 @@ public class users {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof users)) return false;
-        users users = (users) o;
+        if (!(o instanceof Users)) return false;
+        Users users = (Users) o;
         return getId() == users.getId() &&
                 getCohortId() == users.getCohortId() &&
                 getName().equals(users.getName()) &&

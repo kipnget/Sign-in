@@ -1,11 +1,9 @@
 package models;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
-public class attendance {
+public class Attendance {
     private int id;
     private Timestamp date;
     private int userID;
@@ -13,7 +11,7 @@ public class attendance {
     private Timestamp signInTime;
     private int score;
 
-    public attendance(int id, Timestamp date, int userID, int cohortID, Timestamp signInTime, int score) {
+    public Attendance(int id, Timestamp date, int userID, int cohortID, Timestamp signInTime, int score) {
         this.id = id;
         this.date = date;
         this.userID = userID;
@@ -73,8 +71,8 @@ public class attendance {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof attendance)) return false;
-        attendance that = (attendance) o;
+        if (!(o instanceof Attendance)) return false;
+        Attendance that = (Attendance) o;
         return getId() == that.getId() &&
                 getUserID() == that.getUserID() &&
                 getCohortID() == that.getCohortID() &&
