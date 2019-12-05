@@ -1,24 +1,41 @@
 package models;
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.time.LocalDateTime;
+
+import java.io.Serializable;
 
 
-public class Attendance {
+public class Attendance implements Serializable{
     private int id;
     private Timestamp date;
     private int userID;
     private int cohortID;
     private Timestamp signInTime;
     private int score;
+    private String attDate;
+    private String deviceId;
+    private String timein;
+    private String lateIn;
+    private String timeout;
 
-    public Attendance(int id, Timestamp date, int userID, int cohortID, Timestamp signInTime, int score) {
+    public Attendance(int id, Timestamp date, int userID, int cohortID, Timestamp signInTime, int score,
+      String attDate,String deviceId,String timein,String lateIn,String timeout
+    ) {
         this.id = id;
         this.date = date;
         this.userID = userID;
         this.cohortID = cohortID;
         this.signInTime = signInTime;
         this.score = score;
+        this.attDate =attDate;
+        this.deviceId =deviceId;
+        this.timein =timein;
+        this.lateIn=lateIn;
+        this.timeout=timeout;
+
     }
+
 
     public int getId() {
         return id;
@@ -68,6 +85,46 @@ public class Attendance {
         this.score = score;
     }
 
+    public String getAttDate() {
+        return attDate;
+    }
+
+    public void setAttDate(String attDate) {
+        this.attDate = attDate;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getTimein() {
+        return timein;
+    }
+
+    public void setTimein(String timein) {
+        this.timein = timein;
+    }
+
+    public String getLateIn() {
+        return lateIn;
+    }
+
+    public void setLateIn(String lateIn) {
+        this.lateIn = lateIn;
+    }
+
+    public String getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(String timeout) {
+        this.timeout = timeout;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,11 +135,19 @@ public class Attendance {
                 getCohortID() == that.getCohortID() &&
                 getScore() == that.getScore() &&
                 getDate().equals(that.getDate()) &&
-                getSignInTime().equals(that.getSignInTime());
+                getSignInTime().equals(that.getSignInTime())&&
+                getAttDate().equals(that.getAttDate())&&
+                getDeviceId().equals(that.getDeviceId())&&
+                getTimein().equals(that.getTimein())&&
+                getTimeout().equals(that.getTimeout())&&
+                getLateIn().equals(that.getLateIn());
+
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDate(), getUserID(), getCohortID(), getSignInTime(), getScore());
+        return Objects.hash(getId(), getDate(), getUserID(), getCohortID(), getSignInTime(), getScore(),getAttDate(),getDeviceId(),
+        getLateIn(),getTimein(),getTimeout());
     }
 }

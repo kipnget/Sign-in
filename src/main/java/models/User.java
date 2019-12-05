@@ -3,18 +3,18 @@ import java.util.ArrayList;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class Users {
+public class User {
     private int id;
     private String name;
     private String email;
     private Timestamp registerDate;
     private String password;
     private int cohortId;
-    ArrayList<Integer>module;
+    ArrayList<String>module;
     private String role;
 
 
-    public Users(int id, String name, String email, Timestamp registerDate, String password, int cohortId, ArrayList<Integer> module, String role) {
+    public User(int id, String name, String email, Timestamp registerDate, String password, int cohortId, ArrayList<String> module, String role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -23,6 +23,10 @@ public class Users {
         this.cohortId = cohortId;
         this.module = module;
         this.role=role;
+    }
+
+    public User() {
+
     }
 
     public int getId() {
@@ -73,11 +77,11 @@ public class Users {
         this.cohortId = cohortId;
     }
 
-    public ArrayList<Integer> getModule() {
+    public ArrayList<String> getModule() {
         return module;
     }
 
-    public void setModule(ArrayList<Integer> module) {
+    public void setModule(ArrayList<String> module) {
         this.module = module;
     }
 
@@ -92,8 +96,8 @@ public class Users {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Users)) return false;
-        Users users = (Users) o;
+        if (!(o instanceof User)) return false;
+        User users = (User) o;
         return getId() == users.getId() &&
                 getCohortId() == users.getCohortId() &&
                 getName().equals(users.getName()) &&

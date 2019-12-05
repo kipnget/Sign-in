@@ -4,23 +4,19 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Cohorts {
+public class Cohort {
     private int id;
     private String name;
-    ArrayList<Integer> module;
+    ArrayList<String> module;
     private Timestamp startDate;
     private Timestamp endDate;
 
-    public Cohorts(int id, String name, ArrayList<Integer> module, Timestamp startDate, Timestamp endDate) {
+    public Cohort( String name, ArrayList<String> module, Timestamp startDate, Timestamp endDate) {
         this.id = id;
         this.name = name;
         this.module = module;
         this.startDate = startDate;
         this.endDate = endDate;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public void setId(int id) {
@@ -35,11 +31,11 @@ public class Cohorts {
         this.name = name;
     }
 
-    public ArrayList<Integer> getModule() {
+    public ArrayList<String> getModule() {
         return module;
     }
 
-    public void setModule(ArrayList<Integer> module) {
+    public void setModule(ArrayList<String> module) {
         this.module = module;
     }
 
@@ -62,17 +58,16 @@ public class Cohorts {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Cohorts)) return false;
-        Cohorts cohorts = (Cohorts) o;
-        return getId() == cohorts.getId() &&
-                getName().equals(cohorts.getName()) &&
-                getModule().equals(cohorts.getModule()) &&
-                getStartDate().equals(cohorts.getStartDate()) &&
-                getEndDate().equals(cohorts.getEndDate());
+        if (!(o instanceof Cohort)) return false;
+        Cohort cohort = (Cohort) o;
+        return getName().equals(cohort.getName()) &&
+                getModule().equals(cohort.getModule()) &&
+                getStartDate().equals(cohort.getStartDate()) &&
+                getEndDate().equals(cohort.getEndDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getModule(), getStartDate(), getEndDate());
+        return Objects.hash(getName(), getModule(), getStartDate(), getEndDate());
     }
 }
