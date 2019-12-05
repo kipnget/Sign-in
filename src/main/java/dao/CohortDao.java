@@ -1,19 +1,18 @@
 package dao;
-import models.Cohorts;
-import models.Attendance;
-import models.Users;
+import models.Cohort;
+import models.User;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CohortsDao {
+public interface CohortDao {
     //create cohort
-    void add (Cohorts cohorts);
+    void add (Cohort cohort);
     //read
-    List<Cohorts> getAll();
-    Cohorts findById(int id);
-    List<Users>getAllUsersInACohort(int id);
+    List<Cohort> getAll();
+    Cohort findById(int id);
+    List<User>getAllUserInACohort(int id);
     //update
     void update(int id, String name, ArrayList<Integer> module, Timestamp startDate, Timestamp endDate);
     //delete
