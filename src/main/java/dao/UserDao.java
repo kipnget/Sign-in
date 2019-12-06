@@ -1,12 +1,19 @@
 package dao;
 
+
+import models.Cohort;
+import models.User;
+import DB.DBConnection;
+
 import java.sql.*;
+import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class UserDao {
+
+public abstract class UserDao {
 
     private DataSource ds;
     Connection con;
@@ -42,68 +49,51 @@ public class UserDao {
     }
 
     //user login
-    public void LoginDAO() throws SQLException {
+    public static String authenticateUser(User user) {
+        String userName = User.getName();
+        String password = User.getPassword();
+
+        Connection con = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        String userNameDB = "";
+        String passwordDB = "";
+        String roleDB = "";
+
         try {
-            Context ctx = new InitialContext();
-            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/db");
-            if (ds == null) {
-                throw new SQLException("Can't get data source");
+            con = DBConnection.createConnection();
+            statement = con.createStatement();
+            resultSet = statement.executeQuery("select username,password,role from users");
+
+            while (resultSet.next()) {
+                userNameDB = resultSet.getString("username");
+                passwordDB = resultSet.getString("password");
+                roleDB = resultSet.getString("role");
+
+                if (userName.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("Admin"))
+                    return "Admin_Role";
+                else if (userName.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("Editor"))
+                    return "Editor_Role";
+                else if (userName.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("User"))
+                    return "User_Role";
             }
-            // get database connection
-            con = ds.getConnection();
-            if (con == null) {
-                throw new SQLException("Can't get database connection");
-            }
-
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public boolean changePassword(String userid, String oldpassword,
-                                  String newpassword) {
-        try {
-            // Persist user
-            PreparedStatement ps = con
-                    .prepareStatement("UPDATE blueprintsdb.employee SET password='"
-                            + newpassword
-                            + "' WHERE userid='"
-                            + userid + "'  and password='" + oldpassword + "'");
-            int count = ps.executeUpdate();
-            return (count > 0);
         } catch (SQLException e) {
             e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
         }
-        return false;
-
+        return "Invalid user credentials";
     }
 
-    public boolean validateUser(String userid, String password) {
-        try {
-            // Check the logged admin/student is valid user or not
-            PreparedStatement ps = con
-                    .prepareStatement("select * FROM db.users WHERE userid='"
-                            + userid + "'  and password='" + password + "'");
-            ResultSet resultSet = ps.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
+    public abstract void add(User user);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public abstract List<User> getAll();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+    public abstract List<User>findById(int id);
 
-        }
-        return false;
-    }
+    public abstract List<Cohort> getAll(int cohort_id);
 
+    public abstract List<Cohort>getAllCohortById(int cohort_id);
+
+    public abstract void clearAll();
 }
+

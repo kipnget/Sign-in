@@ -4,17 +4,17 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public class User {
+    private static String name;
+    private static String password;
     private int id;
-    private String name;
     private String email;
     private Timestamp registerDate;
-    private String password;
     private int cohortId;
-    ArrayList<String>module;
+    private String module;
     private String role;
 
 
-    public User(int id, String name, String email, Timestamp registerDate, String password, int cohortId, ArrayList<String> module, String role) {
+    public User(int id, String name, String email, Timestamp registerDate, String password, int cohortId, String module, String role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -37,12 +37,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public static void setName(String name) {
+        User.name = name;
     }
 
     public String getEmail() {
@@ -61,12 +61,12 @@ public class User {
         this.registerDate = registerDate;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public static void setPassword(String password) {
+        User.password = password;
     }
 
     public int getCohortId() {
@@ -77,11 +77,11 @@ public class User {
         this.cohortId = cohortId;
     }
 
-    public ArrayList<String> getModule() {
+    public String getModule() {
         return module;
     }
 
-    public void setModule(ArrayList<String> module) {
+    public void setModule(String module) {
         this.module = module;
     }
 
