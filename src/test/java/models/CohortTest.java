@@ -7,7 +7,7 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-public class CohortsTest {
+public class CohortTest {
     Date date = new Date();
     private final String expectedName = "MC-22";
     private final String expectedModule = "Java";
@@ -16,36 +16,36 @@ public class CohortsTest {
 
     @Test
     public void newUserInstantiatescorrectly_true() {
-        Cohorts testCohort = createCohort();
-        assertTrue(testCohort instanceof Cohorts);
+        Cohort testCohort = createCohort();
+        assertTrue(testCohort instanceof Cohort);
     }
 
     @Test
     public void getName_returnsCorrectName() {
-        Cohorts testCohort = createCohort();
+        Cohort testCohort = createCohort();
         assertEquals(expectedName, testCohort.getName());
     }
 
     @Test
     public void getModule_returnsCorrectModule() {
-        Cohorts testCohort = createCohort();
+        Cohort testCohort = createCohort();
         assertEquals(expectedModule, testCohort.getModule());
     }
 
     @Test
     public void getStartDate_returnsCorrectDate() {
-        Cohorts testCohort = createCohort();
+        Cohort testCohort = createCohort();
         assertEquals(expectedStartDate, testCohort.getStartDate());
     }
 
     @Test
     public void getEndDate_returnsCorrectDate() {
-        Cohorts testCohort = createCohort();
+        Cohort testCohort = createCohort();
         assertEquals(expectedEndDate, testCohort.getEndDate());
     }
 
-    private Cohorts createCohort() {
-        Cohorts testCohort = new Cohorts(expectedName, expectedModule, expectedStartDate, expectedEndDate);
+    private Cohort createCohort() {
+        Cohort testCohort = new Cohort(expectedName, expectedModule, expectedStartDate, expectedEndDate);
         return testCohort;
     }
 
