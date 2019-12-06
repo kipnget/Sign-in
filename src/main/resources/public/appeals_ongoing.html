@@ -1,0 +1,72 @@
+<div>
+    <h2>{{title}}</h2>
+
+    <nav class="nav nav-pills nav-justified" role="tablist">
+        <a class="nav-item nav-link" href="#!appeals">New Appeals</a>
+        <a class="nav-item nav-link active" href="#!appeals/ongoing">Ongoing Appeals</a>
+        <a class="nav-item nav-link" href="#!appeals/closed">Closed Appeals</a>
+    </nav>
+
+    <div class="tab-content">
+
+        <div class="tab-pane fade show active" id="appeals_ongoing" role="tabpanel">
+            <div ng-repeat="appeal in appeals" ng-if="appeal.status==='ongoing'"
+                class="shadow bg-white p-3 my-3 text-dark rounded">
+                <div class="card-title">UserID {{appeal.user}}</div>
+                <div class="card-text">{{appeal.message}}</div>
+                <hr>
+                <div class="card-footer">
+                    <span class="badge mg-green p-2 m-1 csr-ptr text-white" ng-if="!threads[$index]"
+                        ng-click="viewThread($index)">view conversation</span>
+                    <span class="badge mg-green p-2 m-1 csr-ptr text-white" ng-if="threads[$index]"
+                        ng-click="hideThread($index)">hide conversation</span>
+                    <span class="float-right my-1 mx-2">{{appeal.appealdate}}</span>
+
+
+                    <div ng-if="threads[$index]" class="my-3">
+                        <div ng-repeat="res in appeal.responses" class="clearfix">
+                            <div ng-if="res.type==='response'"
+                                class="wd-75 float-left shadow rounded p-3 text-white bg-success mb-2">
+                                <div class="card-text">{{res.message}}</div>
+                                <div class="card-text">{{res.resdate}}</div>
+                            </div>
+
+                            <div ng-if="res.type==='repeal'"
+                                class="wd-75 float-right shadow rounded p-3 text-white bg-primary mb-2">
+                                <div class="card-text">{{res.message}}</div>
+                                <div class="card-text">{{res.resdate}}</div>
+                            </div>
+                        </div>
+
+                        <div class="p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="replies[$index]" name="reply{{$index}}"
+                                            id="reply{{$index}}" class="form-control mg-green-sh">
+                                        <button
+                                            class="btn mg-green mg-green-sh p-2 text-white font-weight-bolder input-group-append"
+                                            ng-click="reply($index)">
+                                            <span class="fa fa-paper-plane-o fa-lg" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                        <button
+                                        class="btn mg-green mg-green-sh p-2 text-white font-weight-bolder input-group-append"
+                                        ng-click="closeAppeal($index)">
+                                        <span class="fa fa-thumbs-up fa-lg" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

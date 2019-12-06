@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+    <title>Sign-in</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div ng-app="SignIn">
+
+        <div class="menu">
+            <div class="p-1 mg-green font-weight-bolder text-white">
+                <h2>Sign-in Menu</h2>
+            </div>
+            <div class="p-2">
+                <ul>
+                    <li ng-repeat="link in menuRoutes" class="{{link.cls}}" ng-click="navigate(link)">
+                        <a href="{{link.link}}" class="{{link.txtColor}}">{{link.label}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main p-4">
+            <ng-view></ng-view>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

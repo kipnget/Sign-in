@@ -1,0 +1,37 @@
+<div>
+    <h2>{{title}}</h2>
+
+    <div>
+        <table class="table table-sm table-hover table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Year </th>
+                    <th scope="col">Month</th>
+                    <th scope="col">Day</th>
+                    <th scope="col">Cohort</th>
+                    <th scope="col">Enrollment</th>
+                    <th scope="col">Present</th>
+                    <th scope="col">Absent</th>
+                    <th scope="col" class="text-center">View</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in attendance">
+                    <th scope="row">{{$index+1}}</th>
+                    <td>{{data.year}}</td>
+                    <td>{{data.month}}</td>
+                    <td>{{data.day}}</td>
+                    <td>{{data.cohort}}</td>
+                    <td class="text-center">{{data.present}}</td>
+                    <td class="text-center">{{data.present}}</td>
+                    <td class="text-center">{{data.absent}}</td>
+                    <td>
+                        <span class="badge badge-pill mg-green p-2 shadow-sm m-1 csr-ptr">Present</span>
+                        <span class="badge badge-pill mg-green p-2 shadow-sm m-1 csr-ptr">Absent</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

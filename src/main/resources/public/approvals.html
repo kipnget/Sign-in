@@ -1,0 +1,35 @@
+<div>
+    <h2>{{title}}</h2>
+
+    <div>
+        <table class="table table-sm table-hover table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name </th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Cohort</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Registration Date</th>
+                    <th scope="col" class="text-center">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <th scope="row">{{$index+1}}</th>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.cohort}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.regdate}}</td>
+                    <td class="text-center">
+                        <span ng-click="approve(user.id,true)"
+                            class="badge badge-pill badge-success p-2 shadow-sm m-1 csr-ptr">Approve</span>
+                        <span ng-click="approve(user.id,false)"
+                            class="badge badge-pill badge-danger p-2 shadow-sm m-1 csr-ptr">Decline</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
