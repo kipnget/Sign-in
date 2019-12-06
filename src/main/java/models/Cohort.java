@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Cohort {
-    private int id;
+    private int cohort_id;
     private String name;
-    ArrayList<String> module;
+    private String module;
     private Timestamp startDate;
     private Timestamp endDate;
 
-    public Cohort( String name, ArrayList<String> module, Timestamp startDate, Timestamp endDate) {
-        this.id = id;
+    public Cohort( String name, String module, Timestamp startDate, Timestamp endDate) {
+        this.cohort_id = cohort_id;
         this.name = name;
         this.module = module;
         this.startDate = startDate;
@@ -20,7 +20,7 @@ public class Cohort {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.cohort_id = cohort_id;
     }
 
     public String getName() {
@@ -31,11 +31,11 @@ public class Cohort {
         this.name = name;
     }
 
-    public ArrayList<String> getModule() {
+    public String getModule() {
         return module;
     }
 
-    public void setModule(ArrayList<String> module) {
+    public void setModule(String module) {
         this.module = module;
     }
 
