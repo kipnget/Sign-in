@@ -1,0 +1,28 @@
+<div>
+    <h2>{{title}}</h2>
+
+    <div>
+        <table class="table table-sm table-hover table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name </th>
+                    <th scope="col">Module</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col" class="text-center"># Enrollment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cohort in cohorts">
+                    <th scope="row">{{$index+1}}</th>
+                    <td>{{cohort.name}}</td>
+                    <td>{{cohort.module}}</td>
+                    <td>{{cohort.startdate}}</td>
+                    <td>{{cohort.enddate}}</td>
+                    <td class="text-center">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
