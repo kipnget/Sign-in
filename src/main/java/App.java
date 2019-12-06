@@ -1,6 +1,8 @@
+import models.Cohort;
 import models.User;
 import dao.UserDao;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +27,37 @@ public class App extends HttpServlet{
         User.setName(userName);
         User.setPassword(password);
 
-        UserDao userDao = new UserDao();
+        UserDao userDao = new UserDao() {
+            @Override
+            public void add(User user) {
+
+            }
+
+            @Override
+            public List<User> getAll() {
+                return null;
+            }
+
+            @Override
+            public List<User> findById(int id) {
+                return null;
+            }
+
+            @Override
+            public List<Cohort> getAll(int cohort_id) {
+                return null;
+            }
+
+            @Override
+            public List<Cohort> getAllCohortById(int cohort_id) {
+                return null;
+            }
+
+            @Override
+            public void clearAll() {
+
+            }
+        };
 
         try
         {
